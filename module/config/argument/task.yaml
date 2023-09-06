@@ -1,0 +1,40 @@
+# --------------------
+# Define argument group of tasks.
+# --------------------
+
+# ==================== Alas ====================
+
+Alas:
+  menu: 'list'
+  page: 'setting'
+  tasks:
+    Alas:
+      - Emulator
+      - EmulatorInfo
+      - Error
+      - Optimization
+    Restart:
+      - Scheduler
+
+# ==================== Daily ====================
+
+Daily:
+  menu: 'list'
+  page: 'setting'
+  tasks:
+    Dungeon:
+      - Scheduler
+      - Dungeon
+      - DungeonDaily
+      - DungeonSupport
+      - DungeonStorage
+    DailyQuest:
+      - Scheduler
+      - AchievableQuest
+      - DailyStorage
+    BattlePass:
+      - Scheduler
+      - BattlePassStorage
+    Assignment:
+      - Scheduler
+      - Assignment

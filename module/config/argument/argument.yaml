@@ -1,0 +1,166 @@
+# --------------------
+# Define arguments.
+# --------------------
+
+# ==================== Alas ====================
+
+Scheduler:
+  Enable:
+    type: checkbox
+    value: false
+    option: [ true, false ]
+  NextRun: 2020-01-01 00:00:00
+  Command: Alas
+  ServerUpdate:
+    value: 04:00
+    display: hide
+Emulator:
+  Serial:
+    value: auto
+    valuetype: str
+  PackageName:
+    value: auto
+    option: [ auto, ]
+  ScreenshotMethod:
+    value: auto
+    option: [ auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy ]
+  ControlMethod:
+    value: MaaTouch
+    option: [ minitouch, MaaTouch ]
+  AdbRestart: false
+EmulatorInfo:
+  Emulator:
+    value: auto
+    option: [
+      auto,
+      NoxPlayer,
+      NoxPlayer64,
+      BlueStacks4,
+      BlueStacks5,
+      BlueStacks4HyperV,
+      BlueStacks5HyperV,
+      LDPlayer3,
+      LDPlayer4,
+      LDPlayer9,
+      MuMuPlayer,
+      MuMuPlayerX,
+      MuMuPlayer12,
+      MEmuPlayer,
+    ]
+  name:
+    value: null
+    type: textarea
+  path:
+    value: null
+    type: textarea
+Error:
+  Restart:
+    value: game
+    option: [ game, game_emulator ]
+  SaveError: true
+  ScreenshotLength: 1
+  OnePushConfig:
+    type: textarea
+    mode: yaml
+    value: 'provider: null'
+Optimization:
+  ScreenshotInterval: 0.3
+  CombatScreenshotInterval: 1.0
+  WhenTaskQueueEmpty:
+    value: goto_main
+    option: [ stay_there, goto_main, close_game ]
+
+# ==================== Daily ====================
+
+Dungeon:
+  Name:
+    # Dungeon names will be injected in config updater
+    value: Calyx_Golden_Treasures
+    option: [ ]
+  NameAtDoubleCalyx:
+    value: Calyx_Golden_Treasures
+    option: [ do_not_participate, ]
+  NameAtDoubleRelic:
+    value: Cavern_of_Corrosion_Path_of_Providence
+    option: [ do_not_participate, ]
+  Team:
+    value: 1
+    option: [ 1, 2, 3, 4, 5, 6 ]
+DungeonDaily:
+  # Dungeon names will be injected in config updater
+  CalyxGolden:
+    value: Calyx_Golden_Treasures
+    option: [ do_not_achieve, ]
+  CalyxCrimson:
+    value: Calyx_Crimson_Erudition
+    option: [ do_not_achieve, ]
+  StagnantShadow:
+    value: do_not_achieve
+    option: [ do_not_achieve, ]
+  CavernOfCorrosion:
+    value: Cavern_of_Corrosion_Path_of_Providence
+    option: [ do_not_achieve, ]
+DungeonSupport:
+  Use:
+    value: when_daily
+    option: [ always_use, when_daily, do_not_use ]
+  Character:
+    # Options will be injected in config updater
+    value: FirstCharacter
+    option: [ FirstCharacter, ]
+DungeonStorage:
+  TrailblazePower:
+    stored: StoredTrailblazePower
+    order: 1
+    color: "#eb8efe"
+  DungeonDouble:
+    stored: StoredDungeonDouble
+  SimulatedUniverse:
+    stored: StoredSimulatedUniverse
+    order: 6
+    color: "#8fb5fe"
+
+AchievableQuest:
+# Quests will be injected in config updater
+#  Complete_1_Daily_Mission:
+#    type: state
+#    value: achievable
+#    option: [ achievable, not_set, not_supported ]
+#    option_bold: [ achievable, ]
+DailyStorage:
+  DailyActivity:
+    stored: StoredDailyActivity
+    order: 2
+    color: "#ffcf70"
+  DailyQuest:
+    stored: StoredDaily
+
+BattlePassStorage:
+  BattlePassLevel:
+    stored: StoredBattlePassLevel
+    order: 5
+    color: "#cbe45b"
+  BattlePassTodayQuest:
+    stored: StoredBattlePassTodayQuest
+
+Assignment:
+  # Options in Name_x will be injected in config updater
+  Name_1:
+    value: Nameless_Land_Nameless_People
+    option: [ Nameless_Land_Nameless_People, ]
+  Name_2:
+    value: Akashic_Records
+    option: [ Nameless_Land_Nameless_People, ]
+  Name_3:
+    value: The_Invisible_Hand
+    option: [ Nameless_Land_Nameless_People, ]
+  Name_4:
+    value: Nine_Billion_Names
+    option: [ Nameless_Land_Nameless_People, ]
+  Duration:
+    value: 20
+    option: [ 4, 8, 12, 20 ]
+  Assignment:
+    stored: StoredAssignment
+    order: 3
+    color: "#79dbc4"

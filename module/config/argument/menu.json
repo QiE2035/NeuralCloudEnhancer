@@ -1,0 +1,20 @@
+{
+  "Alas": {
+    "menu": "list",
+    "page": "setting",
+    "tasks": [
+      "Alas",
+      "Restart"
+    ]
+  },
+  "Daily": {
+    "menu": "list",
+    "page": "setting",
+    "tasks": [
+      "Dungeon",
+      "DailyQuest",
+      "BattlePass",
+      "Assignment"
+    ]
+  }
+}
