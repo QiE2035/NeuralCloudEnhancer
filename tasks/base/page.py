@@ -69,7 +69,7 @@ class Page:
 
 
 # Main page
-page_main = Page(MAIN_GOTO_CHARACTER)
+page_main = Page(MAIN_GOTO_EXPLORE)
 
 # Menu, entered from phone
 page_menu = Page(MENU_CHECK)

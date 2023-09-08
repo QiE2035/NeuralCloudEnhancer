@@ -1,6 +1,5 @@
 import ipaddress
 import logging
-import platform
 import re
 import socket
 import subprocess
@@ -11,7 +10,9 @@ import uiautomator2 as u2
 from adbutils import AdbClient, AdbDevice, AdbTimeout, ForwardItem, ReverseItem
 from adbutils.errors import AdbError
 
+import platform
 from module.base.decorator import Config, cached_property, del_cached_property
+from module.base.utils import SelectedGrids
 from module.base.utils import ensure_time
 from module.device.connection_attr import ConnectionAttr
 from module.device.method.utils import (
@@ -21,7 +22,6 @@ from module.device.method.utils import (
     random_port, get_serial_pair)
 from module.exception import RequestHumanTakeover, EmulatorNotRunningError
 from module.logger import logger
-from module.base.utils import SelectedGrids
 
 
 def retry(func):
@@ -820,7 +820,7 @@ class Connection(ConnectionAttr):
         if show_log:
             logger.info('Get package list')
         output = self.adb_shell(r'dumpsys package | grep "Package \["')
-        packages = re.findall(r'Package \[([^\s]+)\]', output)
+        packages = re.findall(r'Package \[([^\s]+)]', output)
         if len(packages):
             return packages
 
@@ -831,7 +831,7 @@ class Connection(ConnectionAttr):
         packages = re.findall(r'package:([^\s]+)', output)
         return packages
 
-    def list_azurlane_packages(self, keywords=('hkrpg', ), show_log=True):
+    def list_azurlane_packages(self, keywords=('neuralcloud',), show_log=True):
         """
         Args:
             keywords:
@@ -844,7 +844,7 @@ class Connection(ConnectionAttr):
         packages = [p for p in packages if any([k in p.lower() for k in keywords])]
         return packages
 
-    def detect_package(self, keywords=('hkrpg', ), set_config=True):
+    def detect_package(self, keywords=('neuralcloud',), set_config=True):
         """
         Show all possible packages with the given keyword on this device.
         """

@@ -58,48 +58,48 @@ class ConfigGenerator:
             options = deep_get(raw, keys=keys, default=[]) + options
             deep_set(raw, keys=keys, value=options)
 
-        # Insert dungeons
-        from tasks.dungeon.keywords import DungeonList
-        option_add(
-            keys='Dungeon.Name.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_daily_dungeon])
-        # Double events
-        option_add(
-            keys='Dungeon.NameAtDoubleCalyx.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx])
-        option_add(
-            keys='Dungeon.NameAtDoubleRelic.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Cavern_of_Corrosion])
-        # Dungeon daily
-        option_add(
-            keys='DungeonDaily.CalyxGolden.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden])
-        option_add(
-            keys='DungeonDaily.CalyxCrimson.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Crimson])
-        option_add(
-            keys='DungeonDaily.StagnantShadow.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Stagnant_Shadow])
-        option_add(
-            keys='DungeonDaily.CavernOfCorrosion.option',
-            options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Cavern_of_Corrosion])
-        # Insert characters
-        from tasks.character.keywords import CharacterList
-        unsupported_characters = ["FuXuan", "Lynx"]
-        characters = [character.name for character in CharacterList.instances.values()
-                      if character.name not in unsupported_characters]
-        option_add(keys='DungeonSupport.Character.option', options=characters)
-        # Insert daily quests
-        from tasks.daily.keywords import DailyQuest
-        for quest in DailyQuest.instances.values():
-            quest: DailyQuest
-            deep_set(raw, keys=['AchievableQuest', quest.name], value={
-                'type': 'state',
-                'value': 'achievable',
-                'option': ['achievable', 'not_set', 'not_supported'],
-                'option_bold': ['achievable'],
-                'option_light': ['not_supported'],
-            })
+        # # Insert dungeons
+        # from tasks.dungeon.keywords import DungeonList
+        # option_add(
+        #     keys='Dungeon.Name.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_daily_dungeon])
+        # # Double events
+        # option_add(
+        #     keys='Dungeon.NameAtDoubleCalyx.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx])
+        # option_add(
+        #     keys='Dungeon.NameAtDoubleRelic.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Cavern_of_Corrosion])
+        # # Dungeon daily
+        # option_add(
+        #     keys='DungeonDaily.CalyxGolden.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden])
+        # option_add(
+        #     keys='DungeonDaily.CalyxCrimson.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Crimson])
+        # option_add(
+        #     keys='DungeonDaily.StagnantShadow.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Stagnant_Shadow])
+        # option_add(
+        #     keys='DungeonDaily.CavernOfCorrosion.option',
+        #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Cavern_of_Corrosion])
+        # # Insert characters
+        # from tasks.character.keywords import CharacterList
+        # unsupported_characters = ["FuXuan", "Lynx"]
+        # characters = [character.name for character in CharacterList.instances.values()
+        #               if character.name not in unsupported_characters]
+        # option_add(keys='DungeonSupport.Character.option', options=characters)
+        # # Insert daily quests
+        # from tasks.daily.keywords import DailyQuest
+        # for quest in DailyQuest.instances.values():
+        #     quest: DailyQuest
+        #     deep_set(raw, keys=['AchievableQuest', quest.name], value={
+        #         'type': 'state',
+        #         'value': 'achievable',
+        #         'option': ['achievable', 'not_set', 'not_supported'],
+        #         'option_bold': ['achievable'],
+        #         'option_light': ['not_supported'],
+        #     })
 
         # Load
         for path, value in deep_iter(raw, depth=2):
@@ -358,63 +358,63 @@ class ConfigGenerator:
                     value = dungeon.__getattribute__(ingame_lang)
                     deep_set(new, keys=['Dungeon', 'Name', dungeon.name], value=value)
 
-        # Copy dungeon i18n to double events
-        def update_dungeon_names(keys):
-            for dungeon in deep_get(new, keys=keys).values():
-                if '_' in dungeon:
-                    value = deep_get(new, keys=['Dungeon', 'Name', dungeon])
-                    if value:
-                        deep_set(new, keys=f'{keys}.{dungeon}', value=value)
+        # # Copy dungeon i18n to double events
+        # def update_dungeon_names(keys):
+        #     for dungeon in deep_get(new, keys=keys).values():
+        #         if '_' in dungeon:
+        #             value = deep_get(new, keys=['Dungeon', 'Name', dungeon])
+        #             if value:
+        #                 deep_set(new, keys=f'{keys}.{dungeon}', value=value)
 
-        update_dungeon_names('Dungeon.NameAtDoubleCalyx')
-        update_dungeon_names('Dungeon.NameAtDoubleRelic')
-        update_dungeon_names('DungeonDaily.CalyxGolden')
-        update_dungeon_names('DungeonDaily.CalyxCrimson')
-        update_dungeon_names('DungeonDaily.StagnantShadow')
-        update_dungeon_names('DungeonDaily.CavernOfCorrosion')
+        # update_dungeon_names('Dungeon.NameAtDoubleCalyx')
+        # update_dungeon_names('Dungeon.NameAtDoubleRelic')
+        # update_dungeon_names('DungeonDaily.CalyxGolden')
+        # update_dungeon_names('DungeonDaily.CalyxCrimson')
+        # update_dungeon_names('DungeonDaily.StagnantShadow')
+        # update_dungeon_names('DungeonDaily.CavernOfCorrosion')
 
-        # Character names
-        from tasks.character.keywords import CharacterList
-        ingame_lang = gui_lang_to_ingame_lang(lang)
-        characters = deep_get(self.argument, keys='DungeonSupport.Character.option')
-        for character in CharacterList.instances.values():
-            if character.name in characters:
-                value = character.__getattribute__(ingame_lang)
-                if "Trailblazer" in value:
-                    continue
-                deep_set(new, keys=['DungeonSupport', 'Character', character.name], value=value)
-
-        # Daily quests
-        from tasks.daily.keywords import DailyQuest
-        for quest in DailyQuest.instances.values():
-            value = quest.__getattribute__(ingame_lang)
-            deep_set(new, keys=['AchievableQuest', quest.name, 'name'], value=value)
-            # deep_set(new, keys=['DailyQuest', quest.name, 'help'], value='')
-            copy_from = 'Complete_1_Daily_Mission'
-            if quest.name != copy_from:
-                for option in deep_get(self.args, keys=['DailyQuest', 'AchievableQuest', copy_from, 'option']):
-                    value = deep_get(new, keys=['AchievableQuest', copy_from, option])
-                    deep_set(new, keys=['AchievableQuest', quest.name, option], value=value)
+        # # Character names
+        # from tasks.character.keywords import CharacterList
+        # ingame_lang = gui_lang_to_ingame_lang(lang)
+        # characters = deep_get(self.argument, keys='DungeonSupport.Character.option')
+        # for character in CharacterList.instances.values():
+        #     if character.name in characters:
+        #         value = character.__getattribute__(ingame_lang)
+        #         if "Trailblazer" in value:
+        #             continue
+        #         deep_set(new, keys=['DungeonSupport', 'Character', character.name], value=value)
+        #
+        # # Daily quests
+        # from tasks.daily.keywords import DailyQuest
+        # for quest in DailyQuest.instances.values():
+        #     value = quest.__getattribute__(ingame_lang)
+        #     deep_set(new, keys=['AchievableQuest', quest.name, 'name'], value=value)
+        #     # deep_set(new, keys=['DailyQuest', quest.name, 'help'], value='')
+        #     copy_from = 'Complete_1_Daily_Mission'
+        #     if quest.name != copy_from:
+        #         for option in deep_get(self.args, keys=['DailyQuest', 'AchievableQuest', copy_from, 'option']):
+        #             value = deep_get(new, keys=['AchievableQuest', copy_from, option])
+        #             deep_set(new, keys=['AchievableQuest', quest.name, option], value=value)
 
         # GUI i18n
         for path, _ in deep_iter(self.gui, depth=2):
             group, key = path
             deep_load(keys=['Gui', group], words=(key,))
 
-        # zh-TW
-        dic_repl = {
-            '設置': '設定',
-            '支持': '支援',
-            '啓': '啟',
-            '异': '異',
-            '服務器': '伺服器',
-            '文件': '檔案',
-        }
-        if lang == 'zh-TW':
-            for path, value in deep_iter(new, depth=3):
-                for before, after in dic_repl.items():
-                    value = value.replace(before, after)
-                deep_set(new, keys=path, value=value)
+        # # zh-TW
+        # dic_repl = {
+        #     '設置': '設定',
+        #     '支持': '支援',
+        #     '啓': '啟',
+        #     '异': '異',
+        #     '服務器': '伺服器',
+        #     '文件': '檔案',
+        # }
+        # if lang == 'zh-TW':
+        #     for path, value in deep_iter(new, depth=3):
+        #         for before, after in dic_repl.items():
+        #             value = value.replace(before, after)
+        #         deep_set(new, keys=path, value=value)
 
         write_file(filepath_i18n(lang), new)
 
@@ -524,7 +524,7 @@ class ConfigGenerator:
         _ = self.menu
         _ = self.stored
         # _ = self.event
-        self.insert_assignment()
+        # self.insert_assignment()
         self.insert_package()
         # self.insert_server()
         write_file(filepath_args(), self.args)

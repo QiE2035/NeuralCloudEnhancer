@@ -124,7 +124,7 @@ Deploy:
     # --host. Host to listen
     # [Use IPv6] '::'
     # [In most cases] Default to '0.0.0.0'
-    WebuiHost: ::
+    WebuiHost: 0.0.0.0
     # --port. Port to listen
     # You will be able to access webui via `http://{host}:{port}`
     # [In most cases] Default to 22367

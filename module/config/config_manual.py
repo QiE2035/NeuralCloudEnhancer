@@ -7,9 +7,9 @@ class ManualConfig:
         return server.server
 
     SCHEDULER_PRIORITY = """
-    Restart
-    > BattlePass > DailyQuest > Dungeon > Assignment
-    """
+    Restart """
+    # > BattlePass > DailyQuest > Dungeon > Assignment
+    # """
 
     """
     module.assets

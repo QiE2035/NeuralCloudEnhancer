@@ -18,23 +18,23 @@ Alas:
 
 # ==================== Daily ====================
 
-Daily:
-  menu: 'list'
-  page: 'setting'
-  tasks:
-    Dungeon:
-      - Scheduler
-      - Dungeon
-      - DungeonDaily
-      - DungeonSupport
-      - DungeonStorage
-    DailyQuest:
-      - Scheduler
-      - AchievableQuest
-      - DailyStorage
-    BattlePass:
-      - Scheduler
-      - BattlePassStorage
-    Assignment:
-      - Scheduler
-      - Assignment
+#Daily:
+#  menu: 'list'
+#  page: 'setting'
+#  tasks:
+#    Dungeon:
+#      - Scheduler
+#      - Dungeon
+#      - DungeonDaily
+#      - DungeonSupport
+#      - DungeonStorage
+#    DailyQuest:
+#      - Scheduler
+#      - AchievableQuest
+#      - DailyStorage
+#    BattlePass:
+#      - Scheduler
+#      - BattlePassStorage
+#    Assignment:
+#      - Scheduler
+#      - Assignment

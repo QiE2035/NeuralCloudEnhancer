@@ -133,6 +133,17 @@ MAIN_GOTO_BATTLE_PASS = ButtonWrapper(
         button=(860, 36, 889, 56),
     ),
 )
+MAIN_GOTO_EXPLORE = ButtonWrapper(
+    name='MAIN_GOTO_EXPLORE',
+    cn=Button(
+        file='./assets/cn/base/page/MAIN_GOTO_EXPLORE.png',
+        area=(878, 187, 986, 243),
+        search=(858, 167, 1006, 263),
+        color=(161, 169, 177),
+        button=(864, 172, 1201, 270),
+    ),
+)
+
 MAIN_GOTO_CHARACTER = ButtonWrapper(
     name='MAIN_GOTO_CHARACTER',
     share=Button(
