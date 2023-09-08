@@ -3,9 +3,9 @@ from module.logger import logger
 
 
 class NeuralCloudEnhancer(AzurLaneAutoScript):
-    # def restart(self):
-    #     from tasks.login.login import Login
-    #     Login(self.config, device=self.device).app_restart()
+    def restart(self):
+        from tasks.login.login import Login
+        Login(self.config, device=self.device).app_restart()
 
     def start(self):
         from tasks.login.login import Login
