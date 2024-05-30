@@ -1,6 +1,6 @@
 <!-- **| [English](README_en.md) | 简体中文 |** -->
 
-> # 开发中！暂不可用！！！
+> # 已弃坑！暂不可用！！！
 
 # NeuralCloudEnhancer
 
